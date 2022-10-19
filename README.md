@@ -1,3 +1,25 @@
+# Install to override terraform-mars
+
+## For AMD
+
+```sh
+VERSION=0.5.1
+INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/darwin_amd64/
+mkdir -p $INSTALLPATH
+curl https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_${VERSION}_darwin_amd64.zip --output $INSTALLPATH/terraform-provider-credstash_v0.5.1
+chmod +x $INSTALLPATH/terraform-provider-credstash_v0.5.1
+```
+
+## For M1 (probably worth installing both amd and M1)
+
+```sh
+VERSION=0.5.1
+INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/darwin_arm64/
+mkdir -p $INSTALLPATH
+curl https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_${VERSION}_darwin_arm64.zip --output $INSTALLPATH/terraform-provider-credstash_v0.5.1
+chmod +x $INSTALLPATH/terraform-provider-credstash_v0.5.1
+```
+
 # Terraform provider for credstash secrets
 
 [![CircleCI](https://circleci.com/gh/sspinc/terraform-provider-credstash.svg?style=svg)](https://circleci.com/gh/sspinc/terraform-provider-credstash)
