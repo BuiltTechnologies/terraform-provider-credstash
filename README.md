@@ -1,23 +1,27 @@
 # Install to override terraform-mars
 
-## For AMD
+## Automatically find the OS and ARCH:
 
 ```sh
 VERSION=0.5.1
-INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/darwin_amd64/
+OS="$(uname | tr '[:upper:]' '[:lower:]')"
+ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
+INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/${OS}_${ARCH}
 mkdir -p $INSTALLPATH
-curl https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_${VERSION}_darwin_amd64.zip --output $INSTALLPATH/terraform-provider-credstash_v0.5.1
-chmod +x $INSTALLPATH/terraform-provider-credstash_v0.5.1
+curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
+chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
 ```
 
-## For M1 (probably worth installing both amd and M1)
+## NOTE: If you're using the m1 mac it might be worth also installing amd64:
 
 ```sh
 VERSION=0.5.1
-INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/darwin_arm64/
+OS="darwin"
+ARCH="amd64"
+INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/${OS}_${ARCH}
 mkdir -p $INSTALLPATH
-curl https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_${VERSION}_darwin_arm64.zip --output $INSTALLPATH/terraform-provider-credstash_v0.5.1
-chmod +x $INSTALLPATH/terraform-provider-credstash_v0.5.1
+curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
+chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
 ```
 
 # Terraform provider for credstash secrets

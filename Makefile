@@ -11,5 +11,8 @@ install: build
 	cp terraform-provider-credstash ~/.terraform.d/plugins/terraform-provider-credstash_$(VERSION)
 
 release:
-	GOOS=darwin go build -v -o terraform-provider-credstash_darwin_amd64
-	GOOS=linux go build -v -o terraform-provider-credstash_linux_amd64
+	GOOS=linux GOARCH=amd64 go build -o terraform-provider-credstash_$(VERSION)_linux_amd64
+	GOOS=linux GOARCH=arm64 go build -o terraform-provider-credstash_$(VERSION)_linux_arm64
+	GOOS=darwin GOARCH=amd64 go build -o terraform-provider-credstash_$(VERSION)_darwin_amd64
+	GOOS=darwin GOARCH=arm64 go build -o terraform-provider-credstash_$(VERSION)_darwin_arm64
+	
