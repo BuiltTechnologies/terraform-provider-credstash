@@ -24,6 +24,8 @@ curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases
 chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
 ```
 
+NOTE: If you run into errors like the checksums don't match you might need to delete the `.terraform` folder and the `.terraform.lock.hcl` file
+
 # Terraform provider for credstash secrets
 
 [![CircleCI](https://circleci.com/gh/sspinc/terraform-provider-credstash.svg?style=svg)](https://circleci.com/gh/sspinc/terraform-provider-credstash)
