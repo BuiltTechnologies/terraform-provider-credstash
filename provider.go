@@ -62,7 +62,10 @@ func providerConfig(d *schema.ResourceData) (interface{}, error) {
 			SharedConfigState: session.SharedConfigEnable,
 		})
 	} else {
-		sess, err = session.NewSession(&aws.Config{Region: aws.String(region)})
+		sess, err = session.NewSessionWithOptions(session.Options{
+			Config:            aws.Config{Region: aws.String(region)},
+			SharedConfigState: session.SharedConfigEnable,
+		})
 	}
 	if err != nil {
 		return nil, err
