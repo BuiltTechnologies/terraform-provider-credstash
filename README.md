@@ -10,6 +10,11 @@ INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstas
 mkdir -p $INSTALLPATH
 curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
 chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
+# Legacy path
+LEGACYINSTALLPATH=~/.terraform.d/plugins/${OS}_${ARCH}
+mkdir -p $LEGACYINSTALLPATH
+curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $LEGACYINSTALLPATH/terraform-provider-credstash_v${VERSION}
+chmod +x $LEGACYINSTALLPATH/terraform-provider-credstash_v$VERSION
 ```
 
 ## NOTE: If you're using the m1 mac it might be worth also installing amd64:
@@ -22,9 +27,38 @@ INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstas
 mkdir -p $INSTALLPATH
 curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
 chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
+# Legacy path
+LEGACYINSTALLPATH=~/.terraform.d/plugins/${OS}_${ARCH}
+mkdir -p $LEGACYINSTALLPATH
+curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $LEGACYINSTALLPATH/terraform-provider-credstash_v${VERSION}
+chmod +x $LEGACYINSTALLPATH/terraform-provider-credstash_v$VERSION
 ```
 
 NOTE: If you run into errors like the checksums don't match you might need to delete the `.terraform` folder and the `.terraform.lock.hcl` file
+
+Your folder structure should look something like below:
+
+```
+nativ-database git:(zach-helm) tree ~/.terraform.d                                                    
+/Users/zachary.blanton/.terraform.d
+├── checkpoint_cache
+├── checkpoint_signature
+└── plugins
+    ├── darwin_amd64
+    │   └── terraform-provider-credstash_v0.5.1
+    ├── darwin_arm64
+    │   └── terraform-provider-credstash_v0.5.1
+    ├── registry.terraform.io
+    │   ├── hashicorp
+    │   └── terraform-mars
+    │       └── credstash
+    │           └── 0.5.1
+    │               ├── darwin_amd64
+    │               │   └── terraform-provider-credstash_v0.5.1
+    │               └── darwin_arm64
+    │                   └── terraform-provider-credstash_v0.5.1
+    └── terraform-provider-credstash_v0.5.0
+```
 
 # Terraform provider for credstash secrets
 
