@@ -1,0 +1,25 @@
+openapi: 3.0.1
+info:
+  title: terraform-provider-credstash
+  description: Terraform Provider Credstash
+  x-cortex-tag: terraform-provider-credstash
+  x-cortex-type: service
+  x-cortex-groups:
+    - platform
+    - operations
+    - terraform
+  x-cortex-git:
+    github:
+      repository: BuiltTechnologies/terraform-provider-credstash
+  x-cortex-owners:
+    - type: group
+      name: BuiltTechnologies/goat-floaters
+      provider: GITHUB
+      description: Ops Team
+    - type: SLACK
+      channel: ops-cortex-alerts
+      notificationsEnabled: true #optional
+      description: This is the Cloud Infrastructure Slack Channel
+    - type: EMAIL
+      email: infrastructure+cortex@getbuilt.com
+      description: The ops teams mailing group
