@@ -3,35 +3,13 @@
 ## Automatically find the OS and ARCH:
 
 ```sh
-VERSION=0.5.1
-OS="$(uname | tr '[:upper:]' '[:lower:]')"
-ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
-INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/${OS}_${ARCH}
-mkdir -p $INSTALLPATH
-curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
-chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
-# Legacy path
-LEGACYINSTALLPATH=~/.terraform.d/plugins/${OS}_${ARCH}
-mkdir -p $LEGACYINSTALLPATH
-curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $LEGACYINSTALLPATH/terraform-provider-credstash_v${VERSION}
-chmod +x $LEGACYINSTALLPATH/terraform-provider-credstash_v$VERSION
+./install.sh
 ```
 
 ## NOTE: If you're using the m1 mac it might be worth also installing amd64:
 
 ```sh
-VERSION=0.5.1
-OS="darwin"
-ARCH="amd64"
-INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/${OS}_${ARCH}
-mkdir -p $INSTALLPATH
-curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
-chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
-# Legacy path
-LEGACYINSTALLPATH=~/.terraform.d/plugins/${OS}_${ARCH}
-mkdir -p $LEGACYINSTALLPATH
-curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $LEGACYINSTALLPATH/terraform-provider-credstash_v${VERSION}
-chmod +x $LEGACYINSTALLPATH/terraform-provider-credstash_v$VERSION
+OS="darwin" ARCH="amd64" ./install.sh
 ```
 
 NOTE: If you run into errors like the checksums don't match you might need to delete the `.terraform` folder and the `.terraform.lock.hcl` file
