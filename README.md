@@ -6,7 +6,7 @@
 ./install.sh
 ```
 
-## NOTE: If you're using the m1 mac it might be worth also installing amd64:
+## NOTE: If you're using an ARM Mac it might be worth also installing amd64:
 
 ```sh
 OS="darwin" ARCH="amd64" ./install.sh

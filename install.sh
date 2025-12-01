@@ -12,12 +12,12 @@ if [ -z "$ARCH" ]; then
 fi
 
 VERSION=0.5.1
-INSTALLPATH=~/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/${OS}_${ARCH}
-mkdir -p $INSTALLPATH
-curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $INSTALLPATH/terraform-provider-credstash_v${VERSION}
-chmod +x $INSTALLPATH/terraform-provider-credstash_v$VERSION
+INSTALLPATH="${HOME}/.terraform.d/plugins/registry.terraform.io/terraform-mars/credstash/${VERSION}/${OS}_${ARCH}"
+mkdir -p "${INSTALLPATH}"
+curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output "${INSTALLPATH}/terraform-provider-credstash_v${VERSION}"
+chmod +x "${INSTALLPATH}/terraform-provider-credstash_v${VERSION}"
 # Legacy path
-LEGACYINSTALLPATH=~/.terraform.d/plugins/${OS}_${ARCH}
-mkdir -p $LEGACYINSTALLPATH
-curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output $LEGACYINSTALLPATH/terraform-provider-credstash_v${VERSION}
-chmod +x $LEGACYINSTALLPATH/terraform-provider-credstash_v$VERSION
+LEGACYINSTALLPATH="${HOME}/.terraform.d/plugins/${OS}_${ARCH}"
+mkdir -p "${LEGACYINSTALLPATH}"
+curl "https://github.com/BuiltTechnologies/terraform-provider-credstash/releases/download/v${VERSION}/terraform-provider-credstash_v${VERSION}_${OS}_${ARCH}" -L --output "${LEGACYINSTALLPATH}/terraform-provider-credstash_v${VERSION}"
+chmod +x "${LEGACYINSTALLPATH}/terraform-provider-credstash_v${VERSION}"
